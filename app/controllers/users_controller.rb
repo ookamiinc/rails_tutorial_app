@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only:[:edit,:update]
   before_action :admin_user, only: [:destroy]
 
+
   def new
     @user = User.new
   end
@@ -15,9 +16,9 @@ class UsersController < ApplicationController
   def create
      @user = User.new(user_params)
      if @user.save
-       log_in @user
-       flash[:success]="Welcome to the Sample App!"
-       redirect_back_or user
+       @user.send_activation_email
+       flash[:success]="Check your email"
+       redirect_to root_url
      else
        render 'new'
      end
