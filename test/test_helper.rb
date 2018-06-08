@@ -1,6 +1,8 @@
-require File.expand_path('../../config/environment', __FILE__)
+# frozen_string_literal: true
+
+require File.expand_path('../config/environment', __dir__)
 require 'rails/test_help'
-require "minitest/reporters"
+require 'minitest/reporters'
 Minitest::Reporters.use!
 
 class ActiveSupport::TestCase
@@ -12,12 +14,11 @@ class ActiveSupport::TestCase
   end
 
   def log_in_as(user)
-  session[:user_id] = user.id
+    session[:user_id] = user.id
 end
 end
 
 class ActionDispatch::IntegrationTest
-
   # テストユーザーとしてログインする
   def log_in_as(user, password: 'password', remember_me: '1')
     post login_path, params: { session: { email: user.email,
