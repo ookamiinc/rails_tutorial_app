@@ -18,6 +18,9 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+      <%= f.label :profile, "Profile" %><p>50文字以内です。</p>
+      <%= f.text_area :profile, class: "form-control" %>
+
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
 
