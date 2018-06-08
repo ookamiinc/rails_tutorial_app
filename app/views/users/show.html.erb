@@ -7,6 +7,9 @@
         <%= @user.name %>
       </h1>
     </section>
+    <section>
+      <p id="profile"><%= current_user.profile %></p>
+    </section>
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
