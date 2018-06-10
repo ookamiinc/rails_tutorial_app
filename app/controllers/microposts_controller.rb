@@ -25,8 +25,17 @@ class MicropostsController < ApplicationController
   end
 
   def reply
-    @micropost = Micropost.find(params[:micropost_id])
-    @microposts = Micropost.replying(@micropost.id)
+    @origin = Micropost.find(params[:micropost_id])
+    @microposts = Micropost.replying(@origin.id)
+    @micropost = Micropost.new
+  end
+
+  def make_reply
+    @reply = current_user.microposts.build(reply_params)
+    if @reply.save
+      flash[:success] = "Reply posted"
+      redirect_to micropost_reply_path(Micropost.find(@reply.reply_to))
+    end
   end
 
 
