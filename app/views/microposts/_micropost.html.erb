@@ -11,6 +11,6 @@
       <%= link_to "delete", micropost, method: :delete,
                                        data: { confirm: "You sure?" } %>
     <% end %>
-    <%= link_to "likes", micropost_like_path(micropost), method: :post %>
+    <%= link_to "#{micropost.users.count}likes", micropost_like_path(micropost), method: :post %>
   </span>
 </li>
