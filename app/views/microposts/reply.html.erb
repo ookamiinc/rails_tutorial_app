@@ -1,3 +1,11 @@
-<h1> <%= render @micropost %></h1>
-<p>Reply</p>
-<%= render @microposts %>
+<h2>Reply Space</h2>
+<ol class="microposts">
+  <%= render @origin %>
+</ol>
+
+<h4>Reply</h4>
+<ol class="microposts">
+  <%= render @microposts %>
+</ol>
+
+<%= render 'shared/comment_form' %>
