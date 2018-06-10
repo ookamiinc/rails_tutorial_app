@@ -63,6 +63,11 @@ def followers
   render 'show_follow'
 end
 
+def likes
+  @user = User.find(params[:id])
+  @likes = @user.liking
+end
+
   private
 
   def user_params
