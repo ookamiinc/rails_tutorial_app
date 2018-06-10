@@ -13,4 +13,10 @@ class Micropost < ApplicationRecord
       errors.add(:picture, "shuold be less than 5MB")
     end
   end
+
+  def self.searching(search)
+    if search
+      Micropost.where(['content LIKE ?', "%#{search}%"])
+    end
+  end
 end
