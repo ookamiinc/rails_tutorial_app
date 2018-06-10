@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
+      get :likes
     end
   end
   get '/login' => 'sessions#new'
@@ -19,6 +20,9 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   resources :account_activations, only: [:edit]
   resources :password_resets, only: %i[new create edit update]
-  resources :microposts, only: %i[create destroy]
+  resources :microposts, only: %i[create destroy] do
+    post '/like' => 'likes#create'
+    delete '/like' => 'likes#destroy'
+  end
   resources :relationships, only: %i[create destroy]
 end
