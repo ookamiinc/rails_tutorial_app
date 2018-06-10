@@ -25,4 +25,5 @@ Rails.application.routes.draw do
     delete '/like' => 'likes#destroy'
   end
   resources :relationships, only: %i[create destroy]
+  get '/search' => 'microposts#search'
 end
