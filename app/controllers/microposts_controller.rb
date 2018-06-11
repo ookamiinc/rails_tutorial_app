@@ -16,12 +16,12 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    flash[:success] ="Micropost deleted"
+    flash[:success] = "Micropost deleted"
     redirect_to request.referrer || root_url
   end
 
   def search
-    @microposts = Micropost.searching(params[:search]).paginate(page: params[:page], per_page: 10)
+    @microposts = Micropost.searching(params[:search]).paginate(page: params[:page])
   end
 
   def reply
