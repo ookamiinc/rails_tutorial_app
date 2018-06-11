@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   resources :microposts, only: %i[create destroy] do
     post '/like' => 'likes#create'
     delete '/like' => 'likes#destroy'
+    get '/reply' => 'microposts#reply'
+    post '/' => 'microposts#make_reply'
   end
   resources :relationships, only: %i[create destroy]
   get '/search' => 'microposts#search'
