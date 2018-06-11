@@ -16,9 +16,9 @@
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
-    <%= link_to "Likes", likes_user_path %>
     <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <h3 class="users-show">Microposts (<%= @user.microposts.count %>)</h3>
+      <h3 class="fav"><%= link_to "Favorites", likes_user_path%></h3>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>
