@@ -21,6 +21,6 @@ class Micropost < ApplicationRecord
   end
 
   def self.replying(id)
-    Micropost.where("reply_to = ?", id)
+    Micropost.where("reply_to = ?", id).order("created_at ASC")
   end
 end
