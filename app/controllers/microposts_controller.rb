@@ -24,6 +24,8 @@ class MicropostsController < ApplicationController
     @microposts = Micropost.searching(params[:search])
   end
 
+
+
   private
 
   def micropost_params
@@ -34,4 +36,9 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.find_by(id:params[:id])
     redirect_to root_url if @micropost.nil?
   end
+
+  def reply_params
+    params.require(:reply).permit(:content,:picture,:reply_to)
+  end
+
 end
