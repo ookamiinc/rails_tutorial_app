@@ -19,4 +19,8 @@ class Micropost < ApplicationRecord
       Micropost.where(['content LIKE ?', "%#{search}%"])
     end
   end
+
+  def self.replying(id)
+    Micropost.where("reply_to = ?", id).order("created_at ASC")
+  end
 end

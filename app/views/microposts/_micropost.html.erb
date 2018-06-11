@@ -17,4 +17,5 @@
     <%= link_to "#{micropost.users.count}likes", micropost_like_path(micropost),id: "unlike", method: :delete %>
     <% end %>
   </span>
+  <%= link_to "reply", micropost_reply_path(micropost) %>
 </li>
