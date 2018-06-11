@@ -14,9 +14,9 @@ class Micropost < ApplicationRecord
     end
   end
 
-  def self.searching(search)
-    if search
-      Micropost.where(['content LIKE ?', "%#{search}%"])
+  def self.searching(word)
+    if word
+      Micropost.where('content LIKE ?', "%#{word}%")
     end
   end
 
