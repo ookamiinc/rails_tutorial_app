@@ -30,6 +30,14 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.new
   end
 
+  def make_reply
+    @reply = current_user.microposts.build(reply_params)
+    if @reply.save
+      flash[:success] = "Reply posted"
+      redirect_to micropost_reply_path(Micropost.find(@reply.reply_to))
+    end
+  end
+
 
   private
 
