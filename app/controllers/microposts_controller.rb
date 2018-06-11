@@ -21,7 +21,7 @@ class MicropostsController < ApplicationController
   end
 
   def search
-    @microposts = Micropost.searching(params[:search])
+    @microposts = Micropost.searching(params[:search]).paginate(page: params[:page], per_page: 10)
   end
 
   def reply
