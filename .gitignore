@@ -19,8 +19,9 @@
 
 /node_modules
 /yarn-error.log
+/.env
 
 .byebug_history
 
 # Ignore Spring files.
-/spring/*.pid
+/spring/*.pid bundle exec guardComplete advanced setup"
