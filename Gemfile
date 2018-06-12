@@ -17,6 +17,9 @@ gem 'sass-rails',   '5.0.6'
 gem 'turbolinks',   '5.0.1'
 gem 'uglifier',     '3.2.0'
 gem 'will_paginate', '3.1.6'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'dotenv-rails' #環境変数を簡単に利用できるgem
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri

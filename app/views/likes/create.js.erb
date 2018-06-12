@@ -1,2 +1,3 @@
-　#機能せず
-$("#micropost-<%= @micropost.id %>").find(".like").attr("class", "unlike");
+<% if !@micropost.id.nil? %>
+$("#micropost-322").find(".like").attr("class", "unlike");
+<% end %>
