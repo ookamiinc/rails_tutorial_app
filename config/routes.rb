@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get :following, :followers
       get :likes
       get '/dm' => 'messages#index'
+      post '/dm' => 'messages#create'
     end
   end
   get '/login' => 'sessions#new'
