@@ -8,8 +8,9 @@
       </h1>
     </section>
     <section>
-      <p id="profile"><%= current_user.profile %></p>
+      <p id="profile"><%= @user.profile %></p>
     </section>
+    <%= link_to"DM", dm_user_path(@user,other_user:current_user.id) %>
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>

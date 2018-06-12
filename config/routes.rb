@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'messages/index'
+
   root 'static_pages#home'
   get 'password_resets/new'
   get 'password_resets/edit'
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
       get :likes
+      get '/dm' => 'messages#index'
+      post '/dm' => 'messages#create'
     end
   end
   get '/login' => 'sessions#new'
