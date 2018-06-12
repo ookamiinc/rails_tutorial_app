@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :liking, through: :likes, source: :micropost
+  has_many :sending, class_name: "Message",
+                    foreign_key: "send_user_id"
+  has_many :receives, class_name: "Message",
+                     foreign_key: "user_id"
 
   attr_accessor :remember_token, :activation_token ,:reset_token
   before_save :downcase_email
@@ -95,6 +99,21 @@ class User < ApplicationRecord
  def following?(other_user)
    following.include?(other_user)
  end
+
+
+ def self.find_or_create_from_auth_hash(auth_hash)
+#OmniAuthで取得した各データを代入していく
+  provider = auth_hash[:provider]
+  uid = auth_hash[:uid]
+  nickname = auth_hash[:info][:nickname]
+  image_url = auth_hash[:info][:image]
+
+  User.find_or_create_by(provider: provider, uid: uid) do |user|
+    user.name = nickname
+  end
+end
+
+
 
  private
 
