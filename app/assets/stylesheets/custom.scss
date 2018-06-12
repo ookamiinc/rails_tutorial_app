@@ -298,12 +298,12 @@ span.picture {
   margin-bottom: 10px;
 }
 
-#like {
+.like {
   color: #C0C0C0;
   font-size: 30px;
   text-decoration: none;
 }
-#unlike {
+.unlike {
   color: red;
   font-size: 30px;
   text-decoration: none;
@@ -317,9 +317,6 @@ span.picture {
 	float: left;
 }
 
-.close {
-  display: none;
-}
 
 .fav {
   margin-left: 20px;
