@@ -9,6 +9,6 @@ class CreateMessages < ActiveRecord::Migration[5.1]
     end
     add_index :messages, :user_id
     add_index :messages, :send_user_id
-    add_index :messages, %i[user_id send_user_id], unique: true
+    add_index :messages, %i[user_id send_user_id]
   end
 end

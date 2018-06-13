@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20180612115823) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["send_user_id"], name: "index_messages_on_send_user_id"
-    t.index ["user_id", "send_user_id"], name: "index_messages_on_user_id_and_send_user_id", unique: true
+    t.index ["user_id", "send_user_id"], name: "index_messages_on_user_id_and_send_user_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
