@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @user = User.find(params[:id])
+    @messages = Message.dm(current_user.id,@user.id)
   end
 
   def create
