@@ -16,7 +16,6 @@ Rails.application.routes.draw do
       get :following, :followers
       get :likes
       get '/dm' => 'messages#index'
-      post '/dm' => 'messages#create'
     end
   end
   get '/login' => 'sessions#new'
@@ -32,4 +31,5 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: %i[create destroy]
   get '/search' => 'microposts#search'
+  resources :messages, only: [:create]
 end
