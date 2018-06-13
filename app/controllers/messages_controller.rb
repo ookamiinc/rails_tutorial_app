@@ -6,10 +6,10 @@ class MessagesController < ApplicationController
   end
 
   def create
-    user = current_user
-    message = user.sending.build(user_id:params[:id])
+    user = User.find(params[:id])
+    message = current_user.sending.build(user_id:user.id)
     if message.save
-      redirect_to root_url
+      redirect_to dm_user_url(user,other_user:current_user.id)
     end
   end
 
