@@ -6,7 +6,7 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@message, url: dm_user_path(@user,other_user:current_user.id)) do |f| %>
+    <%= form_for(@message) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.hidden_field :user_id, value: @user.id %>
