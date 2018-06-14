@@ -13,7 +13,7 @@
     <% end %>
     <% if !Like.exists?(user_id:current_user.id,micropost_id:micropost.id) %>
     <%= link_to "&#9829;".html_safe, micropost_like_path(micropost),class: "like", method: :post, remote: true %>
-    <%= micropost.users.count%>
+    <p class="fav-count"><%= micropost.users.count%></p>
     <% else %>
     <%= link_to "&#9829;".html_safe, micropost_like_path(micropost),class: "unlike", method: :delete %>
     <%= micropost.users.count%>
