@@ -3,11 +3,11 @@
   <div class="field">
     <%= f.text_area :content, placeholder: "Create reply..." %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
  <span class="picture">
   <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
  </span>
-</div>
   <div><%= f.hidden_field :reply_to, value: @origin.id %>
   </div>
-<% end %>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+</div>
+  <% end %>
