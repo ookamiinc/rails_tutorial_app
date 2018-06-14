@@ -20,10 +20,11 @@ class User < ApplicationRecord
   before_create :create_activation_digest
   validates:name,presence:true, length:{maximum: 50 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates:email,presence:true, length: {maximum: 255 },
+  validates:email,
+            length: {maximum: 255 },
             format: { with:VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
-  validates:password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates:password, length: { minimum: 6 }, allow_nil: true
   has_secure_password
   validates:profile, length: {maximum: 50 }
 
@@ -101,24 +102,23 @@ class User < ApplicationRecord
  end
 
 
- def self.find_or_create_from_auth_hash(auth_hash)
-#OmniAuthで取得した各データを代入していく
+def self.find_or_create_from_auth_hash(auth_hash)
   provider = auth_hash[:provider]
   uid = auth_hash[:uid]
-  nickname = auth_hash[:info][:nickname]
-  image_url = auth_hash[:info][:image]
+  name = auth_hash[:info][:name]
 
-  User.find_or_create_by(provider: provider, uid: uid) do |user|
-    user.name = nickname
+  #find_or_create_by()は()の中の条件のものが見つければ取得し、なければ新しく作成するというメソッド
+  self.find_or_create_by(provider: provider,uid: uid) do |user|
+    user.name = name
   end
-end
+ end
 
 
 
  private
 
   def downcase_email
-    self.email = email.downcase
+    self.email = email.downcase if !self.email.nil?
   end
 
   def create_activation_digest
