@@ -18,12 +18,23 @@
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
+      <div class="row">
+        <div class="col-md-5">
       <h3 class="users-show">Microposts (<%= @user.microposts.count %>)</h3>
-      <h3 class="fav"><%= link_to "Favorites", likes_user_path%></h3>
+        </div>
+        <div class="col-md-2">
+        <h3>|</h3>
+        </div>
+        <div class="col-md-5">
+      <h3 class="fav"><%= link_to "Favorites(#{@user.likes.count })", likes_user_path%></h3>
+        </div>
+      </div>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>
       <%= will_paginate @microposts %>
     <% end %>
+      </div>
+
   </div>
 </div>
