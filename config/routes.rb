@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   resources :relationships, only: %i[create destroy]
   get '/search' => 'microposts#search'
   resources :messages, only: [:create]
+  get 'auth/:provider/callback' => 'users#tweet_create'
 end
