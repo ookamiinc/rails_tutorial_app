@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-#コメントのテスト
+
+# コメントのテスト
 
 Rails.application.routes.draw do
   get 'messages/index'
