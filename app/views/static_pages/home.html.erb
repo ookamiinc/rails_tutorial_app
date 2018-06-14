@@ -11,14 +11,18 @@
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
-    <aside class="col-md-8">
-      <%= form_tag(search_path,:method => 'get') do %>
-      <%= text_field_tag :search %>
-      <%= submit_tag 'Search' %>
-      <% end %>
-    </aside>
     <div class="col-md-8">
+      <div class="row">
+      <div class="col-md-8">
   <h3>Micropost Feed</h3>
+        </div>
+        <div class="col-md-4">
+  <%= form_tag(search_path,:method => 'get') do %>
+  <%= text_field_tag :search, ' ',class:"page_name",placeholder:'Search with content..' %>
+  <%= submit_tag 'Search' %>
+  <% end %>
+  </div>
+      </div>
   <%= render 'shared/feed' %>
 </div>
   </div>
