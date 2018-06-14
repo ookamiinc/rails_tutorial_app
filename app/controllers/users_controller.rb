@@ -50,40 +50,39 @@ class UsersController < ApplicationController
   end
 
   def following
-  @title = "Following"
-  @user  = User.find(params[:id])
-  @users = @user.following.paginate(page: params[:page])
-  render 'show_follow'
+    @title = 'Following'
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
 end
 
-def followers
-  @title = "Followers"
-  @user  = User.find(params[:id])
-  @users = @user.followers.paginate(page: params[:page])
-  render 'show_follow'
-end
-
-def likes
-  @user = User.find(params[:id])
-  @likes = @user.liking
-end
-
-def tweet_create
-    user = User.find_or_create_from_auth_hash(request.env['omniauth.auth'])#request.env['omniauth.auth']はTwitter認証で得た情報を格納するもの
-    if user
-      session[:user_id] = user.id
-      redirect_to root_url, notice: "ログインしました。"
-    else
-      redirect_to root_path, notice: "失敗しました。"
-    end
+  def followers
+    @title = 'Followers'
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
   end
 
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.liking
+  end
+
+  def tweet_create
+    user = User.find_or_create_from_auth_hash(request.env['omniauth.auth']) # request.env['omniauth.auth']はTwitter認証で得た情報を格納するもの
+    if user
+      session[:user_id] = user.id
+      redirect_to root_url, notice: 'ログインしました。'
+    else
+      redirect_to root_path, notice: '失敗しました。'
+    end
+    end
 
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation,:profile)
+                                 :password_confirmation, :profile)
   end
 
   def correct_user
