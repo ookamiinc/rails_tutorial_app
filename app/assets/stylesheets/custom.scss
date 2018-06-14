@@ -3,6 +3,8 @@
 
 /* mixins, variables, etc. */
 
+
+
 $gray-medium-light: #eaeaea;
 
 /* universal */
@@ -298,16 +300,6 @@ span.picture {
   margin-bottom: 10px;
 }
 
-.like {
-  color: #C0C0C0;
-  font-size: 30px;
-  text-decoration: none;
-}
-.unlike {
-  color: red;
-  font-size: 30px;
-  text-decoration: none;
-}
 
 #user-like {
   text-align: center;
@@ -324,4 +316,38 @@ span.picture {
 
 .count {
   font-size: 15px;
+}
+
+.like {
+  color: #C0C0C0;
+  font-size: 30px;
+  text-decoration: none;
+}
+.like:hover{
+  text-decoration: none;
+
+}
+
+.like:visited{
+  text-decoration: none;
+
+}
+.unlike {
+  color: red;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.unlike:hover{
+  text-decoration: none;
+
+}
+.unlike:visited{
+  text-decoration: none;
+
+}
+
+.unlike:active{
+  text-decoration: none;
+
 }
