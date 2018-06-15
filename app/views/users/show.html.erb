@@ -16,10 +16,10 @@
     <section class="stats">
       <%= render 'shared/stats' %>
       <% if @user == current_user %>
-      <h5>DM履歴</h5>
-      <ul class="users">
-        <%= render "shared/dm_users" %>
-      </ul>
+        <h5>DM履歴</h5>
+        <ul class="users">
+          <%= render "shared/dm_users" %>
+        </ul>
       <% end %>
     </section>
   </aside>
