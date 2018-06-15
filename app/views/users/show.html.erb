@@ -10,9 +10,17 @@
     <section>
       <p id="profile"><%= @user.profile %></p>
     </section>
-    <%= link_to"DM", dm_user_path(@user,other_user:current_user.id) %>
+    <% unless @user == current_user %>
+      <%= link_to"DM", dm_user_path(@user,other_user:current_user.id) %>
+    <% end %>
     <section class="stats">
       <%= render 'shared/stats' %>
+      <% if @user == current_user %>
+        <h5>DM履歴</h5>
+        <ul class="users">
+          <%= render "shared/dm_users" %>
+        </ul>
+      <% end %>
     </section>
   </aside>
   <div class="col-md-8">
