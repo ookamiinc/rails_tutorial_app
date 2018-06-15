@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :valid_user
+  before_action :valid_user, only:[:index]
   def index
     @message = Message.new
     @user = User.find(params[:id])
