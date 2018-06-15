@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @users = current_user.sended_users
     @microposts = @user.microposts.paginate(page: params[:page])
   end
 
