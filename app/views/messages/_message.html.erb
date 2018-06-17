@@ -2,8 +2,8 @@
 
 
 <li id="message-<%= message.id %>">
-  <%= link_to gravatar_for(message.user, size: 50), message.user %>
-  <span class="user"><%= link_to message.user.name, message.user %></span>
+  <%= link_to gravatar_for(message.send_user, size: 50), message.send_user %>
+  <span class="user"><%= link_to message.send_user.name, message.send_user %></span>
   <span class="content">
     <%= message.content %>
   </span>
