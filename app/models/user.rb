@@ -1,11 +1,11 @@
 class User < ApplicationRecord
   has_many :microposts, dependent: :destroy
-  has_many :active_relationships,  class_name:  "Relationship",
-                                 foreign_key: "follower_id",
-                                 dependent:   :destroy
+  has_many :active_relationships, class_name:  "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent:   :destroy
   has_many :passive_relationships, class_name:  "Relationship",
-                                 foreign_key: "followed_id",
-                                 dependent:   :destroy
+                                   foreign_key: "followed_id",
+                                   dependent:   :destroy
   has_many :likes, dependent: :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
@@ -21,11 +21,11 @@ class User < ApplicationRecord
   before_create :create_activation_digest
   validates:name,presence:true, length:{maximum: 50 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates:email,
+  validates :email,
             length: {maximum: 255 },
             format: { with:VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
-  validates:password, length: { minimum: 6 }, allow_nil: true
+  validates :password, length: { minimum: 6 }, allow_nil: true
   has_secure_password
   validates:profile, length: {maximum: 50 }
 
@@ -39,6 +39,17 @@ class User < ApplicationRecord
   def User.new_token
    SecureRandom.urlsafe_base64
   end
+
+  def self.find_or_create_from_auth_hash(auth_hash)
+    provider = auth_hash[:provider]
+    uid = auth_hash[:uid]
+    name = auth_hash[:info][:name]
+
+    #find_or_create_by()は()の中の条件のものが見つければ取得し、なければ新しく作成するというメソッド
+    self.find_or_create_by(provider: provider, uid: uid) do |user|
+      user.name = name
+    end
+   end
 
   def remember
     self.remember_token = User.new_token
@@ -101,19 +112,6 @@ class User < ApplicationRecord
  def following?(other_user)
    following.include?(other_user)
  end
-
-
-def self.find_or_create_from_auth_hash(auth_hash)
-  provider = auth_hash[:provider]
-  uid = auth_hash[:uid]
-  name = auth_hash[:info][:name]
-
-  #find_or_create_by()は()の中の条件のものが見つければ取得し、なければ新しく作成するというメソッド
-  self.find_or_create_by(provider: provider,uid: uid) do |user|
-    user.name = name
-  end
- end
-
 
 
  private
